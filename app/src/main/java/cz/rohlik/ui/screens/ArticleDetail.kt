@@ -29,6 +29,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import cz.rohlik.R
 import cz.rohlik.domain.Article
+import cz.rohlik.domain.UiChoice
 import cz.rohlik.ui.ArticleDetailViewModel
 import cz.rohlik.ui.theme.RohlikTheme
 import cz.rohlik.ui.theme.RohlikTypography
@@ -37,6 +38,7 @@ import timber.log.Timber
 @Composable
 internal fun ArticleDetail(
     viewModel: ArticleDetailViewModel,
+    appBarActionCallback: AppBarActionCallback,
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -55,7 +57,12 @@ internal fun ArticleDetail(
             )
         }
         is ArticleDetailViewModel.UiState.Loaded -> {
-            Article(usedState.article)
+            ArticleSwitch(
+                article = usedState.article,
+                uiChoice = usedState.uiChoice,
+                appBarActionCallback = appBarActionCallback,
+                onSwitch = viewModel::setUiChoice,
+            )
         }
     }
 }
@@ -73,7 +80,27 @@ private fun LoadingDetail() {
 }
 
 @Composable
-private fun Article(
+private fun ArticleSwitch(
+    article: Article,
+    uiChoice: UiChoice,
+    appBarActionCallback: AppBarActionCallback,
+    onSwitch: (UiChoice) -> Unit,
+) {
+    Column {
+        when (uiChoice) {
+            UiChoice.HUMAN -> ArticleHuman(article)
+            UiChoice.AI -> ArticleAi(article)
+        }
+        SwitchUiBottomSheet(
+            uiChoice = uiChoice,
+            appBarActionCallback = appBarActionCallback,
+            onSwitch = onSwitch,
+        )
+    }
+}
+
+@Composable
+private fun ArticleHuman(
     article: Article,
 ) {
     Column(
@@ -114,7 +141,7 @@ private fun Article(
 }
 
 @Composable
-private fun ArticleGemini(
+private fun ArticleAi(
     article: Article,
 ) {
     val scrollState = rememberScrollState()
@@ -174,9 +201,19 @@ internal fun LoadingDetailPreview() {
 
 @Composable
 @Preview
-internal fun ArticlePreview() {
+internal fun ArticleHumanPreview() {
     RohlikTheme {
-        Article(
+        ArticleHuman(
+            article = article,
+        )
+    }
+}
+
+@Composable
+@Preview
+internal fun ArticleAiPreview() {
+    RohlikTheme {
+        ArticleAi(
             article = article,
         )
     }

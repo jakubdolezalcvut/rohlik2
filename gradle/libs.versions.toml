@@ -9,6 +9,7 @@ activityCompose = "1.10.1"
 composeBom = "2025.05.01"
 coil = "3.2.0"
 navigationRuntimeAndroid = "2.9.0"
+datastorePreferences = "1.1.0"
 koinBom = "4.1.0-RC1"
 okHttpBom = "4.12.0"
 retrofit = "3.0.0"
@@ -38,9 +39,12 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose" }
+androidx-navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigationRuntimeAndroid" }
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
+datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastorePreferences" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
+koin-android = { group = "io.insert-koin", name="koin-android" }
 koin-core = { group = "io.insert-koin", name="koin-core" }
 koin-compose = { group = "io.insert-koin", name="koin-androidx-compose" }
 koin-compose-navigation = { group = "io.insert-koin", name="koin-androidx-compose-navigation" }
@@ -57,7 +61,6 @@ kotest-runner = { group = "io.kotest", name = "kotest-runner-junit5", version.re
 kotest-assertions-core = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
-androidx-navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigationRuntimeAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

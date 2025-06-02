@@ -1,4 +1,4 @@
-package cz.rohlik.data
+package cz.rohlik.network
 
 internal data class Articles(
     val results: List<Article>,

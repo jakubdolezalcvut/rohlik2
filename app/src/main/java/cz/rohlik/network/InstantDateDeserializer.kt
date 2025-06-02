@@ -1,4 +1,4 @@
-package cz.rohlik.data
+package cz.rohlik.network
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

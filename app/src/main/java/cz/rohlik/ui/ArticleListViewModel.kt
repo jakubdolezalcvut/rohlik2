@@ -56,7 +56,7 @@ internal class ArticleListViewModel(
 
                 articleRepository.loadArticles(
                     offset = 0,
-                    limit = 10,
+                    limit = 20,
                     search = search,
                 )
                     .onSuccess { articles ->

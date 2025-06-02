@@ -19,7 +19,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun MainScreen() {
-    val searchNavigationCallback = remember { SearchNavigationCallback() }
+    val appBarActionCallback = remember { AppBarActionCallback() }
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     val route = backStackEntry?.destination
@@ -37,7 +37,7 @@ internal fun MainScreen() {
         topBar = {
             AppBar(
                 screenType = screenType,
-                searchNavigationCallback = searchNavigationCallback,
+                appBarActionCallback = appBarActionCallback,
                 navigateUp = navController::popBackStack,
             )
         },
@@ -51,8 +51,8 @@ internal fun MainScreen() {
                 val viewModel = koinViewModel<ArticleListViewModel>(viewModelStoreOwner = navBackStackEntry)
 
                 ArticleList(
-                    searchNavigationCallback = searchNavigationCallback,
                     viewModel = viewModel,
+                    appBarActionCallback = appBarActionCallback,
                 ) { articleId ->
                     navController.navigate(
                         Destination.ArticleDetail(articleId)
@@ -64,6 +64,7 @@ internal fun MainScreen() {
 
                 ArticleDetail(
                     viewModel = viewModel,
+                    appBarActionCallback = appBarActionCallback,
                 )
             }
 

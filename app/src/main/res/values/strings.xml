@@ -9,4 +9,7 @@
     <string name="empty_button">Reset</string>
     <string name="search_title">Search for something</string>
     <string name="search_button">Search</string>
+    <string name="switch_title">Human or AI</string>
+    <string name="switch_message_human">Human</string>
+    <string name="switch_message_ai">AI</string>
 </resources>

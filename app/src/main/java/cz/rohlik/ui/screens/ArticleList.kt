@@ -34,8 +34,8 @@ import kotlinx.collections.immutable.ImmutableList
 
 @Composable
 internal fun ArticleList(
-    searchNavigationCallback: SearchNavigationCallback,
     viewModel: ArticleListViewModel,
+    appBarActionCallback: AppBarActionCallback,
     onArticleOpen: (Long) -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
@@ -65,7 +65,7 @@ internal fun ArticleList(
             ArticleList(
                 articles = usedState.articles,
                 search = usedState.search,
-                searchNavigationCallback = searchNavigationCallback,
+                appBarActionCallback = appBarActionCallback,
                 onClick = onArticleOpen,
                 onSearch = viewModel::search,
             )
@@ -95,7 +95,7 @@ private fun LoadingList() {
 private fun ArticleList(
     articles: ImmutableList<Article>,
     search: String,
-    searchNavigationCallback: SearchNavigationCallback,
+    appBarActionCallback: AppBarActionCallback,
     onClick: (Long) -> Unit,
     onSearch: (String) -> Unit,
 ) {
@@ -120,7 +120,7 @@ private fun ArticleList(
         }
         SearchBottomSheet(
             text = search,
-            searchNavigationCallback = searchNavigationCallback,
+            appBarActionCallback = appBarActionCallback,
             onSearch = onSearch,
         )
     }
@@ -173,7 +173,7 @@ internal fun ArticlesPreview() {
         ArticleList(
             articles = articles,
             search = "",
-            searchNavigationCallback = SearchNavigationCallback(),
+            appBarActionCallback = AppBarActionCallback(),
             onClick = { },
             onSearch = { },
         )

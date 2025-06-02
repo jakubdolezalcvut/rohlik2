@@ -1,4 +1,4 @@
-package cz.rohlik.data
+package cz.rohlik.network
 
 import retrofit2.http.GET
 import retrofit2.http.Path

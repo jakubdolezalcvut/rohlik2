@@ -1,7 +1,7 @@
 package cz.rohlik
 
-import cz.rohlik.data.ArticleMapper
-import cz.rohlik.data.Author
+import cz.rohlik.network.ArticleMapper
+import cz.rohlik.network.Author
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.collections.immutable.persistentListOf
@@ -9,7 +9,7 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import okhttp3.HttpUrl.Companion.toHttpUrl
-import cz.rohlik.data.Article as DataArticle
+import cz.rohlik.network.Article as DataArticle
 import cz.rohlik.domain.Article as DomainArticle
 
 internal class ArticleMapperTest : FunSpec ({

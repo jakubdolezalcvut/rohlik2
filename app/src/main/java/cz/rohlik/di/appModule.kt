@@ -3,11 +3,12 @@ package cz.rohlik.di
 import androidx.lifecycle.SavedStateHandle
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import cz.rohlik.data.ArticleMapper
+import cz.rohlik.network.ArticleMapper
 import cz.rohlik.domain.ArticleRepository
-import cz.rohlik.data.Constants
-import cz.rohlik.data.InstantDateDeserializer
-import cz.rohlik.data.SpaceflightService
+import cz.rohlik.network.Constants
+import cz.rohlik.network.InstantDateDeserializer
+import cz.rohlik.network.SpaceflightService
+import cz.rohlik.preferences.UiChoiceDataSource
 import cz.rohlik.ui.ArticleListViewModel
 import cz.rohlik.ui.ArticleDetailViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,6 +18,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
 import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -26,6 +28,7 @@ internal val appModule = module {
 
     factoryOf(::ArticleRepository)
     factoryOf(::ArticleMapper)
+    singleOf(::UiChoiceDataSource)
     viewModel { (handle: SavedStateHandle) ->
         ArticleListViewModel(get(), handle)
     }
@@ -33,6 +36,7 @@ internal val appModule = module {
         ArticleDetailViewModel(
             articleRepository = get(),
             savedStateHandle = handle,
+            uiChoiceDataSource = get(),
         )
     }
     factory<TimeZone> { TimeZone.currentSystemDefault() }

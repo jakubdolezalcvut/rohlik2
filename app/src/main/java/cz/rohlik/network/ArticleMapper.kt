@@ -1,10 +1,10 @@
-package cz.rohlik.data
+package cz.rohlik.network
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import okhttp3.HttpUrl.Companion.toHttpUrl
-import cz.rohlik.data.Article as DataArticle
+import cz.rohlik.network.Article as DataArticle
 import cz.rohlik.domain.Article as DomainArticle
 
 internal class ArticleMapper(

@@ -1,7 +1,7 @@
 package cz.rohlik.domain
 
-import cz.rohlik.data.ArticleMapper
-import cz.rohlik.data.SpaceflightService
+import cz.rohlik.network.ArticleMapper
+import cz.rohlik.network.SpaceflightService
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.Dispatchers

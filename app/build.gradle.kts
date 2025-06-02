@@ -57,11 +57,14 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.navigation.compose)
+    implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.datastore.preferences)
 
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
 
     implementation(platform(libs.koin.bom))
+    implementation(libs.koin.android)
     implementation(libs.koin.core)
     implementation(libs.koin.compose)
     implementation(libs.koin.compose.navigation)
@@ -78,7 +81,6 @@ dependencies {
     implementation(libs.gson)
 
     implementation(libs.timber)
-    implementation(libs.androidx.navigation.runtime.android)
 
     testImplementation(libs.junit)
     testImplementation(libs.kotest.runner)
