@@ -168,7 +168,7 @@ internal fun LoadingListPreview() {
 
 @Composable
 @Preview
-internal fun ArticlesPreview() {
+internal fun ArticleListPreview() {
     RohlikTheme {
         ArticleList(
             articles = articles,

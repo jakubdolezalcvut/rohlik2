@@ -59,7 +59,7 @@ internal fun SearchBottomSheet(
                 showBottomSheet = false
             },
         ) {
-            SearchScreen(
+            SearchBottomSheet(
                 text = text,
                 onClick = { typedText ->
                     scope.launch { sheetState.hide() }.invokeOnCompletion {
@@ -75,7 +75,7 @@ internal fun SearchBottomSheet(
 }
 
 @Composable
-private fun SearchScreen(
+private fun SearchBottomSheet(
     text: String,
     onClick: (String) -> Unit,
 ) {
@@ -121,7 +121,7 @@ private fun SearchScreen(
 @Preview
 internal fun SearchBottomSheetPreview() {
     RohlikTheme {
-        SearchScreen(
+        SearchBottomSheet(
             text = "Space",
             onClick = { },
         )

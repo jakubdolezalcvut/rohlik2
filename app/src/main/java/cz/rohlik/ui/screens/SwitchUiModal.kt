@@ -57,7 +57,7 @@ internal fun SwitchUiBottomSheet(
                 showBottomSheet = false
             },
         ) {
-            SwitchUiScreen(
+            SwitchUiBottomSheet(
                 choice = uiChoice,
                 onSwitch = onSwitch,
             )
@@ -66,7 +66,7 @@ internal fun SwitchUiBottomSheet(
 }
 
 @Composable
-private fun SwitchUiScreen(
+private fun SwitchUiBottomSheet(
     choice: UiChoice,
     onSwitch: (UiChoice) -> Unit,
 ) {
@@ -109,9 +109,9 @@ private fun SwitchUiScreen(
 
 @Composable
 @Preview
-internal fun SwitchUiScreenBottomSheetPreview() {
+internal fun SwitchUiBottomSheetPreview() {
     RohlikTheme {
-        SwitchUiScreen(
+        SwitchUiBottomSheet(
             choice = UiChoice.HUMAN,
             onSwitch = { },
         )

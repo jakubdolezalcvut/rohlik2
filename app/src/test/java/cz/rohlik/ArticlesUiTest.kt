@@ -1,39 +1,49 @@
 package cz.rohlik
 
 import app.cash.paparazzi.DeviceConfig
+import cz.rohlik.ui.screens.ArticleHumanPreview
+import cz.rohlik.ui.screens.ArticleListPreview
+import cz.rohlik.ui.screens.ErrorScreenPreview
+import cz.rohlik.ui.screens.SearchBottomSheetPreview
+import cz.rohlik.ui.screens.SwitchUiBottomSheetPreview
+import io.kotest.core.spec.style.FunSpec
 import app.cash.paparazzi.Paparazzi
-import cz.rohlik.ui.screens.ArticlesPreview
-import cz.rohlik.ui.screens.ErrorPreview
-import cz.rohlik.ui.screens.LoadingPreview
-import org.junit.Rule
-import org.junit.Test
 
-internal class ArticlesUiTest {
+internal class ArticleScreenshots : FunSpec({
 
-    @get:Rule
     val paparazzi = Paparazzi(
         deviceConfig = DeviceConfig.PIXEL_6,
         theme = "android:Theme.Material.Light.NoActionBar",
     )
+    extension(PaparazziExtension(paparazzi))
 
-    @Test
-    fun loadingPreview() {
+    test("ArticleListPreview") {
         paparazzi.snapshot {
-            LoadingPreview()
+            ArticleListPreview()
         }
     }
 
-    @Test
-    fun errorPreview() {
+    test("ArticleHumanPreview") {
         paparazzi.snapshot {
-            ErrorPreview()
+            ArticleHumanPreview()
         }
     }
 
-    @Test
-    fun articlesPreview() {
+    test("SearchBottomSheetPreview") {
         paparazzi.snapshot {
-            ArticlesPreview()
+            SearchBottomSheetPreview()
         }
     }
-}
+
+    test("SwitchUiBottomSheetPreview") {
+        paparazzi.snapshot {
+            SwitchUiBottomSheetPreview()
+        }
+    }
+
+    test("ErrorScreenPreview") {
+        paparazzi.snapshot {
+            ErrorScreenPreview()
+        }
+    }
+})
